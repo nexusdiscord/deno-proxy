@@ -1,87 +1,87 @@
 # Deno Serverless Proxy
 
-Serverless proxy untuk Deno Deploy yang memungkinkan Anda mem-proxy request ke URL manapun.
+A serverless proxy for Deno Deploy that allows you to proxy requests to any URL.
 
-## 🚀 Deploy ke Deno Deploy
+## 🚀 Deploy to Deno Deploy
 
-### Cara 1: Deploy via Dashboard
+### Option 1: Deploy via Dashboard
 
-1. Buka [Deno Deploy Dashboard](https://dash.deno.com/new)
-2. Pilih "Deploy from GitHub" atau "Deploy from local"
-3. Pilih repository ini atau upload file `main.ts`
-4. Deploy akan otomatis berjalan
+1. Go to [Deno Deploy Dashboard](https://dash.deno.com/new)
+2. Select "Deploy from GitHub" or "Deploy from local"
+3. Choose this repository or upload the `main.ts` file
+4. Deployment will run automatically
 
-### Cara 2: Deploy via CLI
+### Option 2: Deploy via CLI
 
 ```bash
 # Install Deno Deploy CLI (deployctl)
 deno install --allow-read --allow-write --allow-env --allow-net --allow-run --no-check -r -f https://deno.land/x/deploy/deployctl.ts
 
-# Deploy ke Deno Deploy
-deployctl deploy --project=nama-project-anda main.ts
+# Deploy to Deno Deploy
+deployctl deploy --project=your-project-name main.ts
 ```
 
-## 📖 Cara Penggunaan
+## 📖 Usage
 
-Setelah deploy, Anda bisa mengakses proxy dengan format:
+After deployment, you can access the proxy with this format:
 
 ```
-https://nama-project-anda.deno.dev/[URL_TARGET]
+https://your-project-name.deno.dev/[TARGET_URL]
 ```
 
-### Contoh Penggunaan
+### Usage Examples
 
-**Proxy ke website:**
+**Proxy a website:**
 ```
 https://quiet-wasp-17.deno.dev/https://example.com
 ```
 
-**Proxy ke API:**
+**Proxy an API:**
 ```
 https://quiet-wasp-17.deno.dev/https://api.github.com/users/denoland
 ```
 
-**Dengan query parameters:**
+**With query parameters:**
 ```
 https://quiet-wasp-17.deno.dev/https://api.example.com/data?param=value&key=123
 ```
 
-## ✨ Fitur
+## ✨ Features
 
-- ✅ Support semua HTTP methods (GET, POST, PUT, DELETE, dll)
-- ✅ Meneruskan headers dan body request
-- ✅ Support query parameters
-- ✅ CORS enabled secara default
-- ✅ Error handling yang baik
-- ✅ Halaman info di root URL
+- ✅ Supports all HTTP methods (GET, POST, PUT, DELETE, etc.)
+- ✅ Forwards headers and request body
+- ✅ Supports query parameters
+- ✅ CORS enabled by default
+- ✅ Proper error handling
+- ✅ Simple "Hello World" homepage
 
-## 🧪 Testing Lokal
+## 🧪 Local Testing
 
-Jalankan server di local untuk testing:
+Run the server locally for testing:
 
 ```bash
-# Dengan Deno task
+# Using Deno task
 deno task dev
 
-# Atau langsung
+# Or directly
 deno run --allow-net --allow-env main.ts
 ```
 
-Kemudian akses:
+Then access:
 ```
 http://localhost:8000/https://example.com
 ```
 
-## 🔒 Catatan Keamanan
+## 🔒 Security Notes
 
-Proxy ini bersifat open dan dapat mengakses URL apapun. Untuk production:
+This proxy is open and can access any URL. For production use:
 
-1. Pertimbangkan untuk menambahkan authentication
-2. Tambahkan rate limiting
-3. Buat whitelist domain yang diizinkan
-4. Monitor penggunaan untuk mencegah abuse
+1. Consider adding authentication
+2. Implement rate limiting
+3. Create a whitelist of allowed domains
+4. Monitor usage to prevent abuse
 
-## 📝 Contoh Request dengan curl
+## 📝 Example Requests with curl
 
 **GET Request:**
 ```bash
@@ -95,14 +95,14 @@ curl -X POST https://quiet-wasp-17.deno.dev/https://httpbin.org/post \
   -d '{"key":"value"}'
 ```
 
-## 🛠️ Kustomisasi
+## 🛠️ Customization
 
-Anda bisa memodifikasi `main.ts` untuk:
-- Menambahkan authentication
-- Membatasi domain yang diizinkan
-- Menambahkan caching
-- Logging request
-- Rate limiting
+You can modify `main.ts` to:
+- Add authentication
+- Restrict allowed domains
+- Add caching
+- Log requests
+- Implement rate limiting
 
 ## 📄 License
 
